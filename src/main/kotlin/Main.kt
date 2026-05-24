@@ -1,39 +1,36 @@
-import br.edu.`if`.robot.MarcianoAvancado
+import br.edu.`if`.robot.MarcianoPremium
+import br.edu.`if`.robot.RoboSay
 
 fun main() {
-    val robo = MarcianoAvancado()
+    val robo = MarcianoPremium(RoboSay())
 
-    println("Teste da versão avançada do Robô Marciano")
-    println("-----------------------------------------")
-
-    println("👤 Usuário: Tudo bem?")
-    println("🤖 Marciano: ${robo.responda("Tudo bem?")}")
+    println("Teste da versão premium do Robô Marciano")
+    println("----------------------------------------")
     println()
 
-    println("👤 Usuário: PARE")
-    println("🤖 Marciano: ${robo.responda("PARE")}")
-    println()
+    val mensagensDeTeste = listOf(
+        "Tudo bem?",
+        "PARE",
+        "PARE?",
+        "eu quero testar",
+        "agir",
+        "AGIR",
+        "Agir",
+        "eu quero agir agora",
+        "Marciano, você pode agir?",
+        "Olá Marciano"
+    )
 
-    println("👤 Usuário: some 10 5")
-    println("🤖 Marciano: ${robo.responda("some", 10.0, 5.0)}")
-    println()
+    for (mensagem in mensagensDeTeste) {
+        println("👤 Usuário: $mensagem")
 
-    println("👤 Usuário: subtraia 10 5")
-    println("🤖 Marciano: ${robo.responda("subtraia", 10.0, 5.0)}")
-    println()
+        val resposta = robo.responda(mensagem)
+        println("🤖 Marciano: $resposta")
 
-    println("👤 Usuário: multiplique 10 5")
-    println("🤖 Marciano: ${robo.responda("multiplique", 10.0, 5.0)}")
-    println()
+        if (robo.deveExecutarAcao(mensagem)) {
+            robo.executarAcaoPersonalizada()
+        }
 
-    println("👤 Usuário: divida 10 5")
-    println("🤖 Marciano: ${robo.responda("divida", 10.0, 5.0)}")
-    println()
-
-    println("👤 Usuário: divida 10 0")
-    println("🤖 Marciano: ${robo.responda("divida", 10.0, 0.0)}")
-    println()
-
-    println("👤 Usuário: raiz 10 5")
-    println("🤖 Marciano: ${robo.responda("raiz", 10.0, 5.0)}")
+        println()
+    }
 }
