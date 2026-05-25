@@ -260,6 +260,10 @@ A funcionalidade `RoboSay` foi inspirada no utilitário `cowsay`, tradicional pr
 - Site do Cowsay: https://cowsay.diamonds/
 - Repositório cowsay-org/cowsay: https://github.com/cowsay-org/cowsay
 
+## Licença
+
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
+
 ## Observações
 
 Este projeto foi desenvolvido com foco didático, priorizando clareza, organização e aderência aos requisitos da atividade. A estrutura do código foi organizada para separar responsabilidades entre menu, processamento da entrada, regras dos robôs e ação personalizada.
