@@ -1,10 +1,12 @@
-import br.edu.`if`.robot.MarcianoPremium
-import br.edu.`if`.robot.RoboSay
+import br.edu.`if`.robot.MenuPrincipal
+import br.edu.`if`.robot.ProcessadorEntrada
 
 fun main() {
-    val robo = MarcianoPremium(RoboSay())
+    val robo = MenuPrincipal.escolherRobo() ?: return
 
-    mostrarAbertura()
+    println("Digite suas mensagens para conversar com o Marciano.")
+    println("Digite FIM para encerrar.")
+    println()
 
     while (true) {
         print("👤 Você: ")
@@ -15,62 +17,13 @@ fun main() {
             break
         }
 
-        val resposta = processarEntrada(entrada, robo)
+        val resposta = ProcessadorEntrada.processar(entrada, robo)
         println("🤖 Marciano: $resposta")
 
-        if (robo.deveExecutarAcao(entrada)) {
-            robo.executarAcaoPersonalizada()
+        if (ProcessadorEntrada.deveExecutarAcaoPremium(entrada, robo)) {
+            ProcessadorEntrada.executarAcaoPremium(robo)
         }
 
         println()
     }
-}
-
-fun mostrarAbertura() {
-    println("======================================")
-    println(" Robô Marciano em Kotlin - Versão CLI ")
-    println("======================================")
-    println()
-    println("Digite frases para conversar com o robô.")
-    println()
-    println("Exemplos:")
-    println("- Tudo bem?")
-    println("- PARE")
-    println("- PARE?")
-    println("- eu quero testar")
-    println("- some 10 5")
-    println("- subtraia 10 5")
-    println("- multiplique 10 5")
-    println("- divida 10 5")
-    println("- agir")
-    println()
-    println("Digite FIM para encerrar.")
-    println()
-}
-
-fun processarEntrada(entrada: String, robo: MarcianoPremium): String {
-    val partes = entrada.trim().split("\\s+".toRegex())
-
-    if (ehComandoMatematico(partes)) {
-        val operacao = partes[0]
-        val primeiroNumero = partes[1].toDoubleOrNull()
-        val segundoNumero = partes[2].toDoubleOrNull()
-
-        if (primeiroNumero == null || segundoNumero == null) {
-            return "Erro: os operandos devem ser números"
-        }
-
-        return robo.responda(operacao, primeiroNumero, segundoNumero)
-    }
-
-    return robo.responda(entrada)
-}
-
-fun ehComandoMatematico(partes: List<String>): Boolean {
-    if (partes.size != 3) {
-        return false
-    }
-
-    val operacoes = listOf("some", "subtraia", "multiplique", "divida")
-    return partes[0].lowercase() in operacoes
 }
