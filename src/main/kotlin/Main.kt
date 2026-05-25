@@ -7,7 +7,7 @@ fun main() {
     println("Digite suas mensagens para conversar com o Marciano.")
     println("Digite FIM para encerrar.")
     println()
-
+4
     while (true) {
         print("👤 Você: ")
         val entrada = readlnOrNull() ?: ""
