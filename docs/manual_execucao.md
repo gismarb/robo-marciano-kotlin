@@ -179,4 +179,4 @@ Resultado esperado:
 Observação: se o usuário digitar `AGIR` em maiúsculas, a entrada será tratada como grito, e não como comando premium.
 
 > Mais formatos de uso podem ser encontrados na pasta `docs`:
-> - [Roteiro de testes manuais](./docs/roteiro_testes.md).
+> - [Roteiro de testes manuais](roteiro_testes.md).
